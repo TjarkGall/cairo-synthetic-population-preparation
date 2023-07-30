@@ -1,0 +1,15 @@
+# Large files
+data/*
+
+# QGIS ephemeral files
+*.qmd
+
+
+.DS_Store
+
+
+population/03_generate-locations.ipynb
+
+
+# Notebook Checkpoints
+.ipynb_checkpoints/
