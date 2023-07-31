@@ -1,35 +1,44 @@
 
-# Agent-based Simulation for Greater Cairo Region
+# Input preparation for Synthetic Population for Agent-based Simulation for Greater Cairo Region
 
-## Introduction
-We're creating an agent-based simulation of the Greater Cairo Region in Egypt. This work should be entirely reproducible, because it only depend on *open data and open software tools*. All the code and instructions to reproduce the simulation are in this repository.
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-## Downloading the raw datasets
-### OSM Buildings/Addresses
-We use [HOT Export](https://export.hotosm.org/) to download OSM data.
+## Overview
 
-**Method 1 (Direct Download)**
+This repository contains several Jupyter notebooks to prepare different components of a synthetic population of Greater Cairo for agent-based simulations. It was created in collaboration with the Data Team of Transport for Cairo. 
 
-HOT Export Tool publicly caches exports. So, you can directly download the same exact export data we did at [this link](https://export.hotosm.org/downloads/de73c006-9bbd-43c9-a03d-ff33a9995ad3/GCR_addresses_gpkg.zip)
+## Notebooks
 
-**Method 2 (Re-create the OSM)**
-1. Open the [HOT Export tool](https://export.hotosm.org/). 
-2. In the formats tab, the `Geopackage (.gpkg)` option.
-3. In the "Data" tab, choose the YAML config option and paste the following configuration
-    ```yaml
-    planet_osm_point:
-    types:
-        - points
-    select:
-        - 'addr:housenumber'
-        - 'addr:street'
-        - building
-        - name
-    ```
-4. On the right-hand side map, set the bounding box (in the search bar) to `30.5, 29.5, 32.0, 30.5`. The bounding box is in the format `xmin, ymin, xmax,ymax`.
-5. Proceed to the export step and download the data.
+- Preparing a building database from OSM addresses, buildings, and Google Open Buildings
+- Creating a statistically representative synthetic population based on census and surveys
+- Randomly assigning individuals to address points to match today's spatial distribution
+- Generating and assigning activity profiles to individuals based on origin-destination and travel interviews
+- Creating and assigning travel profiles for an average weekday
+- Generating the number and types of different activities (work, leisure, education) and assigning them to address points
+- Rescaling populations based on 2030 populations to match predefined changes in population density and constellation
 
+The resulting data acts as input to an existing pipeline for synthetic population generation and activity-based MATSIM mobility simulations: https://github.com/eqasim-org/ile-de-france/tree/cairo
+In this process, the locations are matched with individuals depending on activity chains and distances.
 
-### Labor Force Survey Data
+## Data
 
-### MAPTIS Traveller Survey
+The process relies on different data sources referenced throughout and can be downloaded for free or requested. If any data is missing, do not hesitate to reach out.
+
+## Contributing
+
+Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the MIT License.
+
+## Acknowledgments
+
+This project was developed as part of the Anthropolis Chair's (IRT SystemX/CentraleSupélec) research on sustainable urban mobility. We would like to acknowledge the support and contributions of the research team and funding agencies. Furthermore, it was initiated during a fellowship at Transport for Cairo and benefitted from a research visit at the American University in Cairo.
+
+## Contact
+
+For questions or inquiries, please contact:
+
+Tjark Gall
+Email: tjark.gall@urban-framework.com
